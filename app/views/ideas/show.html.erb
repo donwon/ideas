@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @idea.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @idea.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @idea.status %>
+</p>
+
+<p>
+  <strong>Vote score:</strong>
+  <%= @idea.vote_score %>
+</p>
+
+<p>
+  <strong>Hit counter:</strong>
+  <%= @idea.hit_counter %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @idea.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_idea_path(@idea) %> |
+<%= link_to 'Back', ideas_path %> |
+<%= link_to 'Add a Comment', ideas_path %>

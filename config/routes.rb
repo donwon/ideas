@@ -1,4 +1,10 @@
 Ideas::Application.routes.draw do
+
+
+  resources :ideas do
+    resources :comments
+  end
+
   devise_for :users
 root :to => "home#index"
   
