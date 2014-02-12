@@ -11,8 +11,9 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
-    @comments = Comment.all
 
+    @idea = Idea.find(params[:id])
+    @comments = @idea.comments
   end
 
   # GET /ideas/new
@@ -28,6 +29,7 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea = Idea.new(idea_params)
+    @comment = Comment.new
 
     @idea.user = current_user
 

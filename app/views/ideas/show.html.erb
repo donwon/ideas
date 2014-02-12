@@ -32,4 +32,28 @@
 
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %> |
-<%= link_to 'Add a Comment', ideas_path %>
+<%= link_to 'Add a Comment', new_idea_comment_path(@idea) %>
+  <% @idea.comments.each do |comment| %>
+  <p>
+    <strong>body:</strong>
+    <%= comment.body %>
+  </p>
+  <p>
+    <strong>comment by:</strong>
+    <%= comment.user.email %>
+  </p>
+  <p>
+    <strong>date posted:</strong>
+    <%= comment.created_at %>
+  </p>
+<%end%>
+
+
+
+
+
+
+
+
+
+
