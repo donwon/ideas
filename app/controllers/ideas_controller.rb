@@ -32,6 +32,7 @@ class IdeasController < ApplicationController
     @comment = Comment.new
 
     @idea.user = current_user
+    @idea.vote_score = 0
 
     respond_to do |format|
       if @idea.save
