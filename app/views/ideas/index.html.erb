@@ -12,6 +12,9 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -27,6 +30,41 @@
         <td><%= link_to 'Show', idea %></td>
         <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
         <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <td>
+          <% vote = current_user.vote_for_this(idea) || Vote.new %>
+
+          <% if vote.persisted? && vote.is_up? %>
+             <%= link_to "unvote", [idea, vote], class: "", method: :delete %>
+            <br>
+            <% else %>
+              <%= form_for [idea, vote] do |f| %>
+              <%= f.hidden_field :is_up, as: :hidden, value: true %>
+              <button type="submit" class="fa fa-thumbs-o-up"></button>
+            <% end %>
+          <%#= render "/votes/vote_form", vote: vote, idea: idea, is_up: true, label: "Up Vote" %>
+          <% end %>
+          Vote Count: <%#= idea.votes_count %>
+            <br>
+          <% if vote.persisted? && vote.is_down? %>
+              <%= link_to "UnVote", [idea, vote], class: "btn btn-danger", method: :delete %>
+          <% else %>
+              <%= form_for [idea, vote] do |f| %>
+              <%= f.hidden_field :is_up, as: :hidden, value: false %>
+              <button type="submit" class="fa fa-thumbs-o-down"></button>
+            <% end %>
+          <% end %>
+       <% end %>
+
+
+
+
+        </td>
+        <td><%= link_to 'Show', idea %></td>
+        <td><%= link_to 'Show', idea %></td>
+
+
+
       </tr>
     <% end %>
   </tbody>

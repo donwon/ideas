@@ -7,4 +7,17 @@ class User < ActiveRecord::Base
 
   has_many :ideas
   has_many :comments
+  has_many :votes
+
+  def vote_for_this idea
+    #returns an array of all the data that where the idea and user match
+    Vote.where(idea: idea, user: self).first
+
+  end
+
+
+
+
+
+
 end
