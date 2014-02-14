@@ -37,11 +37,11 @@
           <% if vote.persisted? && vote.is_up? %>
              <%= link_to "unvote", [idea, vote], class: "", method: :delete %>
             <br>
-            <% else %>
-              <%= form_for [idea, vote] do |f| %>
-              <%= f.hidden_field :is_up, as: :hidden, value: true %>
-              <button type="submit" class="fa fa-thumbs-o-up"></button>
-            <% end %>
+          <% else %>
+
+              <i><%= link_to "" , idea_vote_up_path(idea, vote), class: "fa fa-thumbs-o-up"%></i>
+              
+            
           <%#= render "/votes/vote_form", vote: vote, idea: idea, is_up: true, label: "Up Vote" %>
           <% end %>
           Vote Count: <%#= idea.votes_count %>
@@ -49,10 +49,8 @@
           <% if vote.persisted? && vote.is_down? %>
               <%= link_to "UnVote", [idea, vote], class: "btn btn-danger", method: :delete %>
           <% else %>
-              <%= form_for [idea, vote] do |f| %>
-              <%= f.hidden_field :is_up, as: :hidden, value: false %>
-              <button type="submit" class="fa fa-thumbs-o-down"></button>
-            <% end %>
+               <i><%= link_to "", idea_vote_down_path(idea, vote), class: "fa fa-thumbs-o-down"%></i>
+            
           <% end %>
        <% end %>
 

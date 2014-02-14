@@ -3,6 +3,10 @@ Ideas::Application.routes.draw do
 
   resources :ideas do
     resources :comments
+    get 'vote_up' => 'votes#vote_up'
+    get 'vote_down' => 'votes#vote_down'
+    delete 'vote_delete' => 'votes#votes_delete'
+
     resources :votes
   end
 
