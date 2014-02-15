@@ -52,8 +52,15 @@
           <% end %>
        <% end %>
           </td>
-        <td><%= link_to 'Join', idea %></td>
-   
+        <td>
+          <% if user_signed_in? %>
+            <% if current_user.has_followed? idea %>
+              <%= link_to "UnFollow", idea_participations_path(idea), class: "btn btn-danger", method: :delete %>
+            <% else %>
+              <%= link_to "Join", idea_participations_path(idea), class: "btn btn-primary", method: :post %>
+            <% end %>
+          <% end %>
+        </td>
 
 
 

@@ -8,6 +8,12 @@ Ideas::Application.routes.draw do
     delete 'vote_delete' => 'votes#votes_delete'
 
     resources :votes
+
+
+    resources :participations, only: :create do
+      delete :destroy, on: :collection
+    end
+
   end
 
   devise_for :users

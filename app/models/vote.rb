@@ -19,7 +19,7 @@ class Vote < ActiveRecord::Base
 
  def update_idea_vote_count
     Rails.logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>vote Model")
-   idea.update_vote_count
+   self.idea.update_vote_count
  end
  
 

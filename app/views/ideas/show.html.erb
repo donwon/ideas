@@ -21,8 +21,10 @@
 </p>
 
 <p>
-  <strong>Hit counter:</strong>
-  <%= @idea.hit_counter %>
+  <strong>Joined Members:</strong>
+  <% @idea.participants.each do |member| %>
+  <%= member.email + ", " %> 
+  <% end %>
 </p>
 
 <p>
