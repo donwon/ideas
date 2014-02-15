@@ -13,8 +13,13 @@ class CommentsController < ApplicationController
     @comment = Comment.new params.require(:comment).permit(:body)
     @comment.idea = Idea.find(params[:idea_id])
     @comment.user = current_user
-    @comment.save
+    if @comment.save
+    IdeaMailer.notify_new_comment(@comment).deliver
     redirect_to @idea, notice: "Thanks for your comment"
+    else
+    redirect_to @idea, alert: "Problem saving your comment"
+    end
+
 
   end
 
