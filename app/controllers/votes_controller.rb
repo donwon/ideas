@@ -27,13 +27,13 @@ def vote_down
   end
 end
 
-def update
-  if @vote.update_attributes params.require(:vote).permit([:is_up])
-    redirect_to ideas_path, notice: "Vote updated successfully!"
-  else
-    redirect_to ideas_path, notice: "Problem updating your vote"
-  end
-end
+# def update
+#   if @vote.update_attributes params.require(:vote).permit([:is_up])
+#     redirect_to ideas_path, notice: "Vote updated successfully!"
+#   else
+#     redirect_to ideas_path, notice: "Problem updating your vote"
+#   end
+# end
 
 def destroy
   if @vote.destroy

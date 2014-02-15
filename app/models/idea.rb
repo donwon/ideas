@@ -6,6 +6,7 @@ class Idea < ActiveRecord::Base
   def update_vote_count
     Rails.logger.info("in Idea Model inside update vote count")
     self.vote_score = votes.up.count - votes.down.count
+    self.save
     Rails.logger.info("in Idea Model inside update vote count #{self.vote_score}")
   end
   

@@ -6,8 +6,8 @@
       <th>Title</th>
       <th>Description</th>
       <th>Status</th>
-      <th>Vote score</th>
-      <th>Hit counter</th>
+
+
       <th>User</th>
       <th></th>
       <th></th>
@@ -24,8 +24,8 @@
         <td><%= idea.title %></td>
         <td><%= idea.description %></td>
         <td><%= idea.status %></td>
-        <td><%= idea.vote_score %></td>
-        <td><%= idea.hit_counter %></td>
+
+
         <td><%= idea.user.email %></td>
         <td><%= link_to 'Show', idea %></td>
         <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
@@ -35,31 +35,25 @@
           <% vote = current_user.vote_for_this(idea) || Vote.new %>
 
           <% if vote.persisted? && vote.is_up? %>
-             <%= link_to "unvote", [idea, vote], class: "", method: :delete %>
+             <%= link_to "UnVote", [idea, vote], class: "", method: :delete %>
             <br>
           <% else %>
 
               <i><%= link_to "" , idea_vote_up_path(idea, vote), class: "fa fa-thumbs-o-up"%></i>
-              
-            
           <%#= render "/votes/vote_form", vote: vote, idea: idea, is_up: true, label: "Up Vote" %>
           <% end %>
-          Vote Count: <%#= idea.votes_count %>
+          Vote Count: <%= idea.vote_score %>
             <br>
           <% if vote.persisted? && vote.is_down? %>
-              <%= link_to "UnVote", [idea, vote], class: "btn btn-danger", method: :delete %>
+              <%= link_to "UnVote", [idea, vote], class: "", method: :delete %>
           <% else %>
                <i><%= link_to "", idea_vote_down_path(idea, vote), class: "fa fa-thumbs-o-down"%></i>
             
           <% end %>
        <% end %>
-
-
-
-
-        </td>
-        <td><%= link_to 'Show', idea %></td>
-        <td><%= link_to 'Show', idea %></td>
+          </td>
+        <td><%= link_to 'Join', idea %></td>
+   
 
 
 
